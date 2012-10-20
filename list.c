@@ -7,6 +7,10 @@ typedef struct {
 
 } node ;
 /* given a node prints all the nodes */
+/* parameters
+	@head :
+		head of the linked list
+*/
 void print_nodes( node* head ){
 	node* oldhead = head ;
 	while( head ) {
@@ -19,6 +23,14 @@ void print_nodes( node* head ){
 
 
 /* given an array and a head initializes the link list and returns the head */
+/* parameters
+	@head :
+	    the head of the list which is to be returned.
+	@arr :
+		the array whose values are to be put into the list
+	@size :
+		the size of the array
+*/
 node* initialize_list( node* head,int arr[],int size ) {
 		int counter = 0 ;
 		node* current = head ;
