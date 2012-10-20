@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 char* ref( char* cPtr ) {
-	char new = 'A' ;
-	cPtr = &new ;
+	*cPtr = 'A' ;
 	return cPtr ;
 }
 
@@ -22,10 +21,10 @@ void change( char* str ) {
 }
 
 int main( int argc,char** argv ) {
-	char cPtr ;
+	char* cPtr = ( char* )malloc( sizeof( char ) ) ;
 
-	ref( &cPtr ) ;
-	printf("*cPtr is : %c\n", cPtr ) ;
+	ref( cPtr ) ;
+	printf("*cPtr is : %c\n", *cPtr ) ;
 
 	//char str[] = "hello" ;
 	char* str = ( char* )malloc( sizeof( char )*5 ) ;
