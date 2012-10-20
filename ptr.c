@@ -27,7 +27,13 @@ int main( int argc,char** argv ) {
 	ref( &cPtr ) ;
 	printf("*cPtr is : %c\n", cPtr ) ;
 
-	char str[] = "hello" ;
+	//char str[] = "hello" ;
+	char* str = ( char* )malloc( sizeof( char )*5 ) ;
+	str[0] = 'h' ;
+	str[1] = 'e' ;
+	str[2] = 'l' ;
+	str[3] = 'l' ;
+	str[4] = 'o' ;
 	change( str ) ;
 	printf("str after change is : %s\n", str ) ;
 
