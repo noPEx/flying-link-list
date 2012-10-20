@@ -1,7 +1,8 @@
 #include <stdio.h>
 
 char* ref( char* cPtr ) {
-	*cPtr = 'A' ;
+	char m = 'M' ;
+	cPtr = &m ;
 	return cPtr ;
 }
 
@@ -13,17 +14,23 @@ void change( char* str ) {
 	str[3] = 'l' ;
 	str[4] = 'd' ;
 	*/
+	/*
 	*(str+0) = 'w' ;
 	*(str+1) = 'o' ;
 	*(str+2) = 'r' ;
 	*(str+3) = 'l' ;
 	*(str+4) = 'd' ;
+	*/
+	char news[] = "world" ;
+	str = news ;
 }
 
 int main( int argc,char** argv ) {
 	char* cPtr = ( char* )malloc( sizeof( char ) ) ;
 
 	ref( cPtr ) ;
+	char m = 'M' ;
+	//cPtr = &m ;
 	printf("*cPtr is : %c\n", *cPtr ) ;
 
 	//char str[] = "hello" ;

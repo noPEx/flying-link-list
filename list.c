@@ -6,8 +6,8 @@ typedef struct {
 	int value ;
 
 } node ;
+/* given a node prints all the nodes */
 void print_nodes( node* head ){
-	printf("head->value is : %d\n", head->value ) ;
 	node* oldhead = head ;
 	while( head ) {
 		printf("%d-> ",head->value ) ;
@@ -18,11 +18,10 @@ void print_nodes( node* head ){
 }
 
 
-int* initialize_list( node* head,int arr[],int size ) {
+/* given an array and a head initializes the link list and returns the head */
+node* initialize_list( node* head,int arr[],int size ) {
 		int counter = 0 ;
-		node* oldhead = head ;
 		node* current = head ;
-		printf("hello\n");
 		while( counter < size ) {
 			
 			current = ( node* )malloc( sizeof( node ) ) ;
