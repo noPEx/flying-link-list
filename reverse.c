@@ -14,7 +14,9 @@ typedef struct {
 */
 void print_nodes( node* head ){
 	node* oldhead = head ;
+	printf("in print_nodes : %d\n",head->value ) ;
 	while( head ) {
+		//printf("hehe\n");
 		printf("%d-> ",head->value ) ;
 		head = head->next ;
 
@@ -23,9 +25,17 @@ void print_nodes( node* head ){
 }
 
 
-node* reverse( node* head ) {
-	node* current ;
-	current = head ;
+node* reverse( node* current ) {
+	node* head ;
+	
+	while( current ) {
+		node* next = current->next ;
+		current->next = head ;
+		head = current ;
+		current = next ;
+	}
+	
+	return head ;
 
 }
 
@@ -49,22 +59,24 @@ node* initialize_list( node* head,int arr[],int size ) {
 			current->value = *(arr+counter) ;
 			current->next = head ;
 			head = current ;
-			//printf("cur->val is : %d\n", current->value ) ;
+			printf("cur->val is : %d\n", current->value ) ;
 			counter++ ;
 			
 		}
-		//printf("head->value after init is : %d\n", head->value ) ;
+		printf("head->value after init is : %d\n", head->value ) ;
 		return head ;
 }
 int main( int argc,char** argv ) {
 	int arr[] = { 1,2,3,4,5 } ;
-	node* head;// = (node*)0;//= ( node* )malloc( sizeof( node ) ) ;
+	node* head = NULL;// = (node*)0;//= ( node* )malloc( sizeof( node ) ) ;
 	head = initialize_list( head,arr,5 ) ;
 	printf("The nodes in the list is : \n") ;
+	printf("head->value is : %d\n", head->value ) ;
 	print_nodes( head ) ;
 
 	printf("Going to reverse the linked list * * * * * \n") ;
 	head = reverse( head ) ;
+	print_nodes( head ) ;
 
 	return 0 ;
 } 
