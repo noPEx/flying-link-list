@@ -24,9 +24,13 @@ void print_nodes( node* head ){
 	printf("\n") ;
 }
 
-
+/* reverse a linked list given the head */
+/* parameters
+	@current :
+		head of the linked list passed
+*/
 node* reverse( node* current ) {
-	node* head ;
+	node* head = NULL ;
 	
 	while( current ) {
 		node* next = current->next ;
