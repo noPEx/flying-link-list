@@ -24,6 +24,42 @@ void print_nodes( node* head ){
 	printf("\n") ;
 }
 
+
+/* pairwise reverse a linked list */
+/* parameters 
+	@current :
+		head of the linked list passed
+*/
+node* reverse_pair( node* current) {
+	node* head = current ;
+	while( current ) {
+		if( !current->next ) { //do nothing
+			return head ;
+		}
+		else {
+			node* cur_next = current->next ;
+			if ( cur_next->next ) { //do something
+				node* save = current->next ;
+				current->next = reverse_pair( cur_next->next ) ;
+				save->next = current ;
+				return save ;
+			}
+			else {
+				node* save = current->next ;
+				node* cur_next = current->next ;
+				current->next = cur_next->next ;
+				save->next = current ;
+				return save ;
+			}
+		}
+
+
+
+	}
+	return (node*)NULL ;
+
+}
+
 /* reverse a linked list given the head */
 /* parameters
 	@current :
@@ -71,15 +107,19 @@ node* initialize_list( node* head,int arr[],int size ) {
 		return head ;
 }
 int main( int argc,char** argv ) {
-	int arr[] = { 1,2,3,4,5 } ;
+	int arr[] = { 1,2,3,4,5,6 } ;
+	//int arr[] = { 1,2 } ;
 	node* head = NULL;// = (node*)0;//= ( node* )malloc( sizeof( node ) ) ;
-	head = initialize_list( head,arr,5 ) ;
+	head = initialize_list( head,arr,6 ) ;
 	printf("The nodes in the list is : \n") ;
 	printf("head->value is : %d\n", head->value ) ;
 	print_nodes( head ) ;
 
 	printf("Going to reverse the linked list * * * * * \n") ;
 	head = reverse( head ) ;
+	print_nodes( head ) ;
+
+	head = reverse_pair( head ) ;
 	print_nodes( head ) ;
 
 	return 0 ;
